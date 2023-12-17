@@ -1,11 +1,11 @@
-const Welcome = () => import('../views/Welcome.vue');
+const Home = () => import('../views/Home.vue');
 const About = () => import('../views/About.vue');
 
 export default [
     {
         path: '/',
-        component: Welcome,
-        name: 'welcome',
+        component: Home,
+        name: 'home',
     },
     {
         path: '/about',
