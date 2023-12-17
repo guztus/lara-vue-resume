@@ -1,13 +1,15 @@
 <template>
-    <h2>Hello from Vue 3 component</h2>
-    <p>
-        <router-link to="/">Create</router-link>
-        <router-link to="/resumes">Created resumes</router-link>
-    </p>
+    <NavBar/>
     <router-view />
 </template>
 
 <script>
+import {defineComponent} from "vue";
+import NavBar from "./NavBar.vue";
+
+export default defineComponent({
+    components: { NavBar }
+})
 </script>
 
 <style>
