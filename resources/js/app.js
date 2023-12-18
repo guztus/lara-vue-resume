@@ -9,4 +9,7 @@ createApp(App)
     .use(router)
     .mount("#app");
 
+//axios.defaults.withCredentials = true
+
+global.$ = global.jQuery = require('jquery');
 import "bootstrap/dist/js/bootstrap.min.js";

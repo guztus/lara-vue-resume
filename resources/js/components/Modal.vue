@@ -10,7 +10,8 @@
                     <slot/>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button v-if="showDeleteButton" type="button" class="btn btn-danger me-auto" data-bs-dismiss="modal" @click="deleteAction()">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="submitAction()">{{ saveText ?? 'Save changes' }}</button>
                 </div>
             </div>
@@ -22,13 +23,16 @@
 defineProps([
     'modalId',
     'title',
-    'submitAction',
-    'saveText'
+    'saveText',
+    'showDeleteButton'
 ]);
 
 const emit = defineEmits(['trigger-submit-action']);
 
 function submitAction() {
     emit('trigger-submit-action')
+}
+function deleteAction() {
+    emit('trigger-delete-action')
 }
 </script>

@@ -1,6 +1,8 @@
 <template>
     <NavBar/>
-    <router-view />
+    <div class="container-xxl my-md-4">
+        <router-view />
+    </div>
 </template>
 
 <script>
