@@ -1,64 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Resume creator
+#### <em>This project is a SPA, developed using Laravel, Vue.js and Bootstrap.</em>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Table of contents
 
-## About Laravel
+* [General info](#general-info)
+* [Demonstration GIFs](#demonstration-gifs)
+* [Used Technologies](#used-technologies)
+* [Setup](#setup)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## General info
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project has these features:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* Creating, viewing, saving, editing, deleting a resume
+* Viewing created resume list for current user
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Resumes sorted by their modification date
+* Work experience and education sorted by their start date and those positions that are still active, will show on top
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+* Visible error and success messages as well as input validation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Demonstration GIFs
 
-### Premium Partners
+<div style="text-align: center">
+    <h3>Login</h3>
+    <p align="center">
+        <img src="/demonstration_content/login.gif"  width="95%" alt="animated-demo" /><br>
+    </p>
+    <h3>Validation and editing</h3>
+    <p align="center">
+        <img src="/demonstration_content/error_and_editing.gif" width="95%" alt="animated-demo" /><br>
+    </p>
+    <h3>Deleting</h3>
+    <p align="center">
+        <img src="/demonstration_content/deleting.gif" width="95%" alt="animated-demo" /><br>
+    </p>
+</div>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Used Technologies
 
-## Contributing
+* Laravel `^8.75`
+* PHP `^7.3|^8.0`
+* Vue.js `3.2`
+* MySQL `8.0`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+* Composer `2.6.6`
+* Npm `8.19.3`
+* Node `18.13.0`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Style:
+* Bootstrap 5.3
 
-## Security Vulnerabilities
+## Setup
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+To install this project on your local machine, follow these steps:
 
-## License
+##### Getting the workplace ready
+1. Clone this repository - `git clone https://github.com/guztus/lara-vue-resume`
+2. Locate "/public"
+3. Install composer dependencies - `composer install`
+4. Install node dependencies - `npm install`
+6. Rename the ".env.example" file to ".env" <br>
+7. Create a database and add the credentials to the ".env" file
+##### Running the project
+8. Generate your key for the project `php artisan key:generate`
+9. To run the project, enter `php artisan serve` (to run the backend) and `npm run dev` (to run the frontend).
+10. Make a demo account (will include resumes, work experience and education) `php artisan db:seed --class=DemoSeeder`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+(Demo account login details - email: demo@demo.gz, password: demo@demo.gz)
