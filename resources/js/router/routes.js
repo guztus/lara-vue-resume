@@ -7,6 +7,10 @@ const NotFound = () => import('../views/NotFound.vue')
 export default [
     {
         path: '/',
+        redirect: '/resumes'
+    },
+    {
+        path: '/resume',
         component: Resume,
         name: 'home',
     },

@@ -220,11 +220,13 @@ textarea {
                        placeholder="">
                 <label for="educationLevel">Level</label>
             </div>
+
             <div class="form-floating mb-3">
                 <input type="text" v-model="newEducation.status" class="form-control" id="educationStatus"
                        placeholder="">
                 <label for="educationStatus">Status</label>
             </div>
+
             <div class="form-check mb-3 col">
                 <input
                     id="educationCurrently"
@@ -237,6 +239,7 @@ textarea {
                     Currently Studying
                 </label>
             </div>
+
             <div class="row g-2">
                 <div class="mb-3 col">
                     <label for="educationFrom">Time From</label>
@@ -254,9 +257,14 @@ textarea {
                     </span>
                 </div>
                 <div class="mb-3 col">
-                    <label for="educationFrom" :class="{ 'text-secondary': newEducation.currentlyActive }">Time From</label>
+                    <label
+                        for="educationFrom"
+                        :class="{ 'text-secondary': newEducation.currentlyActive }"
+                    >
+                        Time From
+                    </label>
                     <Datepicker
-                        :disabled="newEducation.currentlyActive"
+                        :disabled="newEducation.currentlyActive == 0 ? false : true"
                         id="educationTo"
                         v-model="newEducation.to"
                         month-picker
@@ -357,13 +365,15 @@ textarea {
                         {{ error.$message }}
                     </span>
                 </div>
-
                 <div class="mb-3 col">
-                    <label for="workFrom">
-                        Time To
+                    <label
+                        for="workFrom"
+                        :class="{ 'text-secondary': newWork.currentlyActive }"
+                    >
+                        Time From
                     </label>
                     <Datepicker
-                        :disabled="newWork.currentlyActive"
+                        :disabled="newWork.currentlyActive == 0 ? false : true"
                         id="workTo"
                         v-model="newWork.to"
                         month-picker
@@ -809,7 +819,7 @@ async function submitEducation() {
 async function editEducation(education) {
     isEditing.value = true;
     newEducation.value = {...education};
-    let test = await v$.value.newEducation.$validate()
+    await v$.value.newEducation.$validate();
     educationModalInstance.toggle();
 }
 

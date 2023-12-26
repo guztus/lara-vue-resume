@@ -34,6 +34,14 @@ class ResumeController extends Controller
     {
         $resume = Auth::user()->resume()->with(['basic', 'work', 'education'])->find($id);
 
+        foreach ($resume['education'] as $education) {
+            $education['currentlyActive'] = !($education['currentlyActive'] === '0');
+        }
+
+        foreach ($resume['work'] as $education) {
+            $education['currentlyActive'] = !($education['currentlyActive'] === '0');
+        }
+
         if (!$resume) {
             return response()->json([
                 'message' => 'Resume does not belong to user'
@@ -94,6 +102,7 @@ class ResumeController extends Controller
                     'school' => $education['school'],
                     'faculty' => $education['faculty'],
                     'direction' => $education['direction'],
+                    'currentlyActive' => $education['currentlyActive'] ? '1' : '0',
                     'from' => $education['from'],
                     'to' => $education['to'] ?? null,
                     'level' => $education['level'] ?? null,
@@ -109,6 +118,7 @@ class ResumeController extends Controller
                     'employer' => $work['employer'],
                     'position' => $work['position'],
                     'type' => $work['type'] ?? null,
+                    'currentlyActive' => $work['currentlyActive'] ? '1' : '0',
                     'from' => $work['from'],
                     'to' => $work['to'] ?? null,
                     'description' => $work['description'] ?? null,
@@ -189,11 +199,10 @@ class ResumeController extends Controller
                         'school' => $education['school'],
                         'faculty' => $education['faculty'],
                         'direction' => $education['direction'],
+                        'currentlyActive' => $education['currentlyActive'] ?? 0,
                         'from' => $education['from'],
                         'to' => $education['to'] ?? null,
                         'level' => $education['level'] ?? null,
-                        'currentlyActive' => $work['currentlyActive'] ?? null,
-                        'description' => $education['description'] ?? null,
                     ]
                 );
             }
@@ -212,9 +221,9 @@ class ResumeController extends Controller
                         'employer' => $work['employer'],
                         'position' => $work['position'],
                         'type' => $work['type'] ?? null,
+                        'currentlyActive' => $work['currentlyActive'] ? '1' : '0',
                         'from' => $work['from'],
                         'to' => $work['to'] ?? null,
-                        'currentlyActive' => $work['currentlyActive'] ?? null,
                         'description' => $work['description'] ?? null,
                     ]
                 );
