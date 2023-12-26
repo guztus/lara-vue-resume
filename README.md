@@ -37,6 +37,10 @@ This project has these features:
     <p align="center">
         <img src="/demonstration_content/deleting.gif" width="95%" alt="animated-demo" /><br>
     </p>
+    <h3>Creating and editing</h3>
+    <p align="center">
+        <img src="/demonstration_content/creating_and_editing.gif" width="95%" alt="animated-demo" /><br>
+    </p>
 </div>
 
 ## Used Technologies
