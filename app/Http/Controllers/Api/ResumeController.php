@@ -65,7 +65,6 @@ class ResumeController extends Controller
         $request->validate([
             '*' => 'max:255',
             'basics.name' => 'required|min:1',
-            'basics.email' => 'required|email',
             'basics.surname' => 'required',
             'education.*.school' => 'required',
             'education.*.faculty' => 'required',
@@ -155,7 +154,6 @@ class ResumeController extends Controller
             '*' => 'min:1|max:255',
             'basics.name' => 'required',
             'basics.surname' => 'required',
-            'basics.email' => 'email',
             'education.*.school' => 'required',
             'education.*.faculty' => 'required',
             'education.*.direction' => 'required',

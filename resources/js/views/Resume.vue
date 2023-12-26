@@ -122,8 +122,8 @@ textarea {
                 <label for="basicsEmail">Email</label>
             </div>
             <span v-for="error in v$.newBasics.email.$errors" :key="error.$uid" class="text-danger fst-italic">
-                   {{ error.$message }}
-                </span>
+               {{ error.$message }}
+            </span>
 
             <div class="form-floating mb-3">
                 <input type="text" v-model="newBasics.phoneNumber" class="form-control" id="basicsPhoneNumber"
@@ -264,7 +264,7 @@ textarea {
                         Time From
                     </label>
                     <Datepicker
-                        :disabled="newEducation.currentlyActive == 0 ? false : true"
+                        :disabled="newEducation.currentlyActive"
                         id="educationTo"
                         v-model="newEducation.to"
                         month-picker
@@ -373,7 +373,7 @@ textarea {
                         Time From
                     </label>
                     <Datepicker
-                        :disabled="newWork.currentlyActive == 0 ? false : true"
+                        :disabled="newWork.currentlyActive"
                         id="workTo"
                         v-model="newWork.to"
                         month-picker
@@ -658,7 +658,6 @@ function setData(id) {
         .get('/api/resume/' + (id ?? props.id))
         .then((res) => {
             resumeName.value = res.data.name;
-            console.log(res.data)
 
             basics.value = res.data.basic ?? {};
             educationList.value = res.data.education ?? {};
@@ -793,7 +792,7 @@ async function submitEducation() {
         education.direction = newEducation.value.direction
         education.level = newEducation.value.level
         education.status = newEducation.value.status
-        education.currentlyActive = newEducation.value.currentlyActive
+        education.currentlyActive = newEducation.value.currentlyActive ?? false
         education.from = newEducation.value.from
         education.to = newEducation.value.to
     } else {
@@ -804,7 +803,7 @@ async function submitEducation() {
             direction: newEducation.value.direction,
             level: newEducation.value.level,
             status: newEducation.value.status,
-            currentlyActive: newEducation.value.currentlyActive,
+            currentlyActive: newEducation.value.currentlyActive ?? false,
             from: newEducation.value.from,
             to: newEducation.value.to,
         });
@@ -825,9 +824,7 @@ async function editEducation(education) {
 
 function deleteEducation() {
     let indexToRemove = educationList.value.findIndex(education => education.id === newEducation.value.id);
-    if (indexToRemove !== -1) {
-        educationList.value.splice(indexToRemove, 1);
-    }
+    educationList.value[indexToRemove].deleted = true;
 }
 
 function addWork() {
@@ -850,7 +847,7 @@ async function submitWork() {
         work.employer = newWork.value.employer
         work.position = newWork.value.position
         work.type = newWork.value.type
-        work.currentlyActive = newWork.value.currentlyActive
+        work.currentlyActive = newWork.value.currentlyActive ?? false
         work.from = newWork.value.from
         work.to = newWork.value.to
         work.description = newWork.value.description
@@ -860,7 +857,7 @@ async function submitWork() {
             employer: newWork.value.employer,
             position: newWork.value.position,
             type: newWork.value.type,
-            currentlyActive: newWork.value.currentlyActive,
+            currentlyActive: newWork.value.currentlyActive ?? false,
             from: newWork.value.from,
             to: newWork.value.to,
             description: newWork.value.description,

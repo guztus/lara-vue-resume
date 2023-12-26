@@ -57,7 +57,7 @@
             >
                 Resume Overview
                 <router-link
-                    to="/"
+                    to="/resume"
                     class="btn addNew my-2"
                     :class="{ 'btn-secondary': hoverOverSection.overview }"
                 >
@@ -132,15 +132,6 @@ axios
         resumeList.value = res.data.resumes
     })
     .catch((err) => {
-        if (err.response.data.errors) {
-            for (const property in err.response.data.errors) {
-                err.response.data.errors[property].forEach((error) => {
-                    errorMessage.show(error)
-                })
-            }
-        } else if (err.response.data.message) {
-            errorMessage.show(err.response.data.message)
-        }
     })
 
 function getDate(resume) {
