@@ -1,15 +1,24 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+// require ('../../ bootstrap');
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.js';
+window.bootstrap = bootstrap
 
 import { createApp } from 'vue';
 
 import App from './components/App.vue';
 import router from './router';
+import axios from 'axios'
+import store from './store'
 
-createApp(App)
-    .use(router)
-    .mount("#app");
+axios.defaults.withCredentials = true
 
-//axios.defaults.withCredentials = true
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 
-global.$ = global.jQuery = require('jquery');
-import "bootstrap/dist/js/bootstrap.min.js";
+store.dispatch('getUser').then(()=>{
+    createApp(App)
+        .use(router)
+        .use(store)
+        .mount('#app');
+})
+
+import 'bootstrap/dist/js/bootstrap.min.js';

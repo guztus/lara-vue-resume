@@ -9,7 +9,7 @@
     </head>
     <body class="antialiased">
 
-        <div id="app"></div>
+        <div id="app" class="bg-light bg-gradient"  style="min-height: 100vh"></div>
 
         <script src="{{ mix('js/app.js') }}"></script>
 

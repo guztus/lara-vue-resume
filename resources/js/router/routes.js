@@ -1,13 +1,13 @@
-const Home = () => import('../views/Home.vue');
-const Resume = () => import('../views/Home.vue');
+const Resume = () => import('../views/Resume.vue');
 const Resumes = () => import('../views/Resumes.vue');
-// const Register = () => import('../views/Register.vue');
-// const Login = () => import('../views/Login.vue');
+const Register = () => import('../views/Register.vue');
+const Login = () => import('../views/Login.vue');
+const NotFound = () => import('../views/NotFound.vue')
 
 export default [
     {
         path: '/',
-        component: Home,
+        component: Resume,
         name: 'home',
     },
     {
@@ -17,17 +17,29 @@ export default [
     },
     {
         path: '/resume/:id',
+        props: true,
         component: Resume,
-        name: 'resume'
+        name: 'resume',
     },
-    // {
-    //     path: '/register',
-    //     component: Register,
-    //     name: 'register'
-    // },
-    // {
-    //     path: '/login',
-    //     component: Login,
-    //     name: 'login'
-    // },
+    {
+        path: '/register',
+        component: Register,
+        name: 'register',
+        meta : {
+            guard : 'guest'
+        }
+    },
+    {
+        path: '/login',
+        component: Login,
+        name: 'login',
+        meta : {
+            guard : 'guest'
+        }
+    },
+    {
+        path: "/:catchAll(.*)",
+        name: "NotFound",
+        component: NotFound,
+    }
 ];
