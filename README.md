@@ -64,14 +64,13 @@ To install this project on your local machine, follow these steps:
 
 ##### Getting the workplace ready
 1. Clone this repository - `git clone https://github.com/guztus/lara-vue-resume`
-2. Locate "/public"
-3. Install composer dependencies - `composer install`
-4. Install node dependencies - `npm install`
-6. Rename the ".env.example" file to ".env" <br>
-7. Create a database and add the credentials to the ".env" file
+2. Install composer dependencies - `composer install`
+3. Install node dependencies - `npm install`
+4. Rename the ".env.example" file to ".env" <br>
+5. Create a database and add the credentials to the ".env" file
 ##### Running the project
-8. Generate your key for the project `php artisan key:generate`
-9. To run the project, enter `php artisan serve` (to run the backend) and `npm run dev` (to run the frontend).
-10. Make a demo account (will include resumes, work experience and education) `php artisan db:seed --class=DemoSeeder`
+6. Generate your key for the project `php artisan key:generate`
+7. To run the project, enter `php artisan serve` (to run the backend) and `npm run dev` (to run the frontend).
+8. Make a demo account (will include resumes, work experience and education) `php artisan db:seed --class=DemoSeeder`
 
 (Demo account login details - email: demo@demo.gz, password: demo@demo.gz)
